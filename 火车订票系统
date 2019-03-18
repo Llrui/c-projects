@@ -287,3 +287,66 @@ void showtrain(Link l)//显示列车信息
 		p=p->next;
 		}
 }
+
+//保存火车信息
+void SavaTrainInfo(Link l){
+	File *fp;
+	Node*p;
+	int count=0,flag=1;
+	fp=fopen("f:\\train.txt","wb");
+	if(fp==null){
+	printf("the file can't be opened!");
+	return;
+	}
+	p=l->next;//遍历p指针
+	while(p)
+  {
+	if(fwrite(p,sizeof(Node),1,fp)==1)
+	{
+		p=p->next;
+		count++;
+		}
+	else{
+		flag=0;
+		break;
+		}
+	}
+	if(flag)
+	{
+		printf("sava %d train recode\n",count);
+		savaflag=0;
+	}
+	fclose(fp);
+}
+//保存订票人信息
+void SavaBookInfo(bookLine k){
+	FILE *p;
+	book *p;
+	int count=0,flag=1;
+	fp=fopen("f:\\man.txt","wb");
+	if (fp==null)
+	{
+		printf("the file can't be opened!");
+		return;
+
+	}
+                                                        
+	p=k->next;
+	while(p)
+	if(fwite(p.sizeof(book),1,fp)==1)
+		{
+		p=p->next;
+		count++;
+	}
+	else 
+		{
+	    flag=0;
+	    break;
+    }
+	if(flag){
+		printf("sava %d booking recodes\n",count);
+		savaflag=0;
+	    }
+	fclose(fp);
+	
+}
